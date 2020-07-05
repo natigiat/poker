@@ -1,0 +1,12 @@
+.settings {
+  background: #022741;
+  position: absolute;
+  bottom: 0px;
+  width: 200px;
+  right: 0px;
+  height: 100vh;
+  border-top: 12px solid;
+  border-image-source: linear-gradient(55deg, rgb(99, 99, 99), rgb(21, 21, 21));
+  border-image-slice: 1;
+  box-shadow: -4px 1px 6px 2px #000000d4;
+}

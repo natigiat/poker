@@ -1,0 +1,26 @@
+.player {
+  position: absolute;
+}
+
+.player-box {
+  background: #000000a1;
+  color: #fff;
+  text-align: center;
+  padding: 4px;
+  width: 128px;
+  border-top-left-radius: 11px;
+  border-top-right-radius: 11px;
+}
+
+.player-image {
+  border-radius: 50px;
+  border: 1px solid white;
+  box-shadow: 0 0 3px 3px black;
+}
+
+img.player-coins {
+  width: 59px;
+  position: absolute;
+  top: 0;
+  right: -9px;
+}

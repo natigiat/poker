@@ -1,0 +1,19 @@
+.table {
+  background: url(/images/wall.jpg);
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+}
+
+.table-image {
+  width: 963px;
+  position: absolute;
+  margin: 0 auto;
+  display: block;
+  top: -44px;
+  height: 606px;
+  left: 0;
+  right: 110px;
+  background: url(/images/table.png);
+  background-size: 100% 100%;
+}
