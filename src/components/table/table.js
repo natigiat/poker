@@ -7,7 +7,7 @@ import axios from "axios";
 
 function Table() {
   const [data, setData] = useState({});
-  const players = 5;
+  const players = 1;
 
   const players_positions = [
     { top: 180, left: -28 },
@@ -38,6 +38,15 @@ function Table() {
             picture={data?.picture?.thumbnail}
           />
         ))}
+
+        <Player
+          name={`You`}
+          credits={22}
+          position={players_positions[3]}
+          picture={
+            "https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144849704.jpg"
+          }
+        />
       </div>
 
       <Settings />

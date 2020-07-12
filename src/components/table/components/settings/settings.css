@@ -1,12 +1,125 @@
 .settings {
   background-image: linear-gradient(to bottom right, #003046, #012332);
   position: absolute;
+  width: 100%;
   bottom: 0px;
-  width: 200px;
   right: 0px;
-  height: 100vh;
+  height: 160px;
   border-top: 12px solid;
   border-image-source: linear-gradient(55deg, rgb(99, 99, 99), rgb(21, 21, 21));
   border-image-slice: 1;
   box-shadow: -4px 1px 6px 2px #000000d4;
+}
+
+.all-in-wrapper {
+  width: 277px;
+  margin: 0 auto;
+  background: #807070;
+  display: flex;
+  border: 2px solid #ededed;
+  border-radius: 16px;
+  position: absolute;
+  top: -30px;
+  opacity: 0.9;
+  left: calc(50% - 152px);
+}
+
+.all-in-wrapper .action {
+  color: #fff;
+  width: 50%;
+  height: 49px;
+  background: #00283a;
+  border-top-left-radius: 13px;
+  border-bottom-left-radius: 13px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  line-height: 2.7;
+}
+
+.budget {
+  color: #fff;
+  background: #062a3a;
+  width: 50%;
+  line-height: 2.7;
+  font-weight: bold;
+  border-top-right-radius: 13px;
+  border-bottom-right-radius: 13px;
+}
+
+.actions-wrapper {
+  position: absolute;
+  width: 400px;
+  border-radius: 13px;
+  background: #000f16;
+  border: 2px solid #484848;
+  right: 70px;
+  top: 20px;
+}
+
+.flex.wrap-first-line {
+  height: 50px;
+  display: flex;
+}
+
+.wrap-first-line div {
+  width: 30%;
+}
+
+.wrap-first-line div * {
+  margin: 0 auto;
+}
+
+.text.fold {
+  color: #2e7cc0;
+  font-weight: bold;
+  font-size: 25px;
+  padding-top: 6px;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.text.call {
+  color: #268c5a;
+  font-weight: bold;
+  font-size: 25px;
+  padding-top: 6px;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.call-number {
+  color: #268c5a;
+  font-weight: bold;
+  font-size: 13px;
+  text-transform: capitalize;
+}
+
+.text.raise {
+  color: #bbc63f;
+  font-weight: bold;
+  font-size: 23px;
+  padding-top: 6px;
+  width: 100%;
+  text-transform: capitalize;
+  text-align: center;
+  cursor: pointer;
+}
+
+.flex.wrap-secound-line {
+  height: 51px;
+}
+
+.horizontal-slider {
+  background: #ab9898ba;
+  height: 23px;
+  margin: 24px;
+  border-radius: 19px;
+}
+
+.example-thumb.example-thumb-0 {
+  background: #0a2b39;
+  padding: 4px;
+  top: -4px;
+  color: #fff;
 }

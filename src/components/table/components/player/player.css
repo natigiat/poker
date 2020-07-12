@@ -11,11 +11,11 @@
   border-top-left-radius: 11px;
   border-top-right-radius: 11px;
 }
-
 .player-image {
   border-radius: 50px;
   border: 1px solid white;
   box-shadow: 0 0 3px 3px black;
+  width: 52px;
 }
 
 img.player-coins {
