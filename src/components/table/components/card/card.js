@@ -11,7 +11,11 @@ function Card(props) {
           asdf
         </div>
       ) : (
-        <img className="back" src="/images/back.png" />
+        <img
+          onClick={props.startGame}
+          className="back"
+          src="/images/back.png"
+        />
       )}
     </>
   );

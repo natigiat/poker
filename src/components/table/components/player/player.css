@@ -18,9 +18,54 @@
   width: 52px;
 }
 
+.player-image.active {
+  animation: pulse 2s infinite;
+}
+
 img.player-coins {
   width: 59px;
   position: absolute;
   top: 0;
   right: -9px;
+}
+
+.card {
+  background: #fff;
+  width: 38px;
+  display: inline-block;
+  margin: 7px;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.bid {
+  position: absolute;
+  right: -117px;
+  top: 3px;
+}
+
+.bid img {
+  width: 30px;
+}
+
+.bid div {
+  color: #fff;
+  margin: 33px -1px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 6, 73, 0.93);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
 }

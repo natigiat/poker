@@ -2768,6 +2768,13 @@ capture-exit@^2.0.0:
   dependencies:
     rsvp "^4.8.4"
 
+cards@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/cards/-/cards-1.0.2.tgz#1c7f68771ae9954d84295b6399cf6f9dffb2d92c"
+  integrity sha512-FW16fh/fDNzwK2EWwZUr17/rsT7fjJohjt03P/6GQPLAdCean7md1YRhGOm8xQxMI/FxLgHJZlff50kOB+bHiQ==
+  dependencies:
+    rand-utils "^1.0.0"
+
 case-sensitive-paths-webpack-plugin@2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/case-sensitive-paths-webpack-plugin/-/case-sensitive-paths-webpack-plugin-2.3.0.tgz#23ac613cc9a856e4f88ff8bb73bbb5e989825cf7"
@@ -8538,6 +8545,11 @@ raf@^3.4.1:
   integrity sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA==
   dependencies:
     performance-now "^2.1.0"
+
+rand-utils@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/rand-utils/-/rand-utils-1.0.0.tgz#3d3bb9201566ce91450cd374a0080e79ed683328"
+  integrity sha1-PTu5IBVmzpFFDNN0oAgOee1oMyg=
 
 random-user-generator@^0.2.0:
   version "0.2.0"
