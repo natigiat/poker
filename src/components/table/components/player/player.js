@@ -9,6 +9,26 @@ function Player(props) {
     return "good";
   };
 
+  const stringToCardIcon = (name) => {
+    switch (name) {
+      case "hearts":
+        return <img src="/images/1.png"></img>;
+        break;
+
+      case "diamonds":
+        return <img src="/images/3.png"></img>;
+        break;
+
+      case "clubs":
+        return <img src="/images/4.png"></img>;
+        break;
+
+      case "spades":
+        return <img src="/images/2.png"></img>;
+        break;
+    }
+  };
+
   return (
     <div
       className="player"
@@ -35,7 +55,7 @@ function Player(props) {
         return (
           <div className="card">
             <div className="crad-number">{card.rank.shortName}</div>
-            <div className="crad-shape">{card.suit.name}</div>
+            <div className="crad-shape">{stringToCardIcon(card.suit.name)}</div>
           </div>
         );
       })}

@@ -1,7 +1,50 @@
 .back {
-  width: 68px;
+  width: 65px;
   position: absolute;
   top: 140px;
   left: 540px;
   cursor: pointer;
 }
+
+
+
+.front {
+  width: 65px;
+  position: absolute;
+  top: 140px;
+  cursor: pointer;
+}
+
+
+.card-table {
+  background: #fff;
+  width: 37px;
+  height: 51px;
+  display: inline-block;
+  margin: 7px;
+  border-radius: 4px;
+}
+
+
+.crad-shape img {
+  width: 13px;
+  margin-top: 11px;
+}
+
+.c1{
+  left: 497px;
+}
+
+.c2{
+  left: 453px;
+}
+
+.c3{
+  left: 409px;
+}
+
+.c4{
+  left: 364px;
+}
+
+

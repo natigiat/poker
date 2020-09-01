@@ -5,6 +5,7 @@ import Player from "./components/player/player";
 import Card from "./components/card/card";
 import axios from "axios";
 const { decks } = require("cards");
+const deck = new decks.StandardDeck();
 
 function Table() {
   const [data, setData] = useState({});
@@ -21,8 +22,9 @@ function Table() {
     isActive: 0,
   });
 
-  const players = 1;
+  const [gamesCards, setgamesCards] = useState(0);
 
+  const players = 1;
   const players_positions = [
     { top: 180, left: -28 },
     { top: 367, left: 50 },
@@ -41,7 +43,6 @@ function Table() {
   }, []);
 
   const startGame = async () => {
-    const deck = new decks.StandardDeck();
     deck.shuffleAll();
 
     setPlayer1({
@@ -56,7 +57,11 @@ function Table() {
   // actions
 
   const allIn = async () => {
-    console.log("allIn");
+    setPlayer1({
+      ...player1,
+      isActive: 1,
+    });
+    setPlayer2({ ...player2, credits: player1.credits - player1.credits });
   };
 
   const fold = async () => {
@@ -71,25 +76,44 @@ function Table() {
       credits: player2.credits - player1.bid,
       isActive: 0,
     });
-    setPlayer1({ ...player1, isActive: 1 });
+    setPlayer1({ ...player1, bid: player2.bid, isActive: 1 });
+
+    setgamesCards(gamesCards + 1);
   };
 
   const raise = async () => {
     console.log("raise");
   };
 
+  const getRandomCard = () => {
+    console.log("------------------------------here------------------------");
+    let card = deck.draw(1);
+    console.log(card);
+
+    return card;
+  };
+  console.log(gamesCards);
   return (
     <div className="table">
       <div className="table-image">
-        <Card type={"back"} startGame={startGame} />
-        {[...Array(players)].map((e, i) => (
-          <Player
-            name={`${data?.name?.first}  ${data?.name?.last}`}
-            position={players_positions[i]}
-            picture={data?.picture?.thumbnail}
-            player={player1}
-          />
-        ))}
+        <div className="card-decks">
+          <Card type={"back"} startGame={startGame} />
+
+          {[...Array(gamesCards)].map((e, i) => (
+            <Card
+              type={"front"}
+              cardNumber={`c${i}`}
+              cardInfo={getRandomCard()}
+            />
+          ))}
+        </div>
+
+        <Player
+          name={`${data?.name?.first}  ${data?.name?.last}`}
+          position={players_positions[0]}
+          picture={data?.picture?.thumbnail}
+          player={player1}
+        />
 
         <Player
           name={`You`}
