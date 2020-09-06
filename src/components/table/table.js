@@ -22,7 +22,8 @@ function Table() {
     isActive: 0,
   });
 
-  const [gamesCards, setgamesCards] = useState(0);
+  const [gamesCards, setgamesCards] = useState({});
+  
 
   const players = 1;
   const players_positions = [
@@ -42,7 +43,7 @@ function Table() {
     fetchData();
   }, []);
 
-  const startGame = async () => {
+  const startGame =  () => {
     deck.shuffleAll();
 
     setPlayer1({
@@ -52,6 +53,7 @@ function Table() {
       credits: player1.credits - 20,
     });
     setPlayer2({ ...player2, cards: deck.draw(2), isActive: 1 });
+    setgamesCards({ ...gamesCards, 1:deck.draw(1) ,  2:deck.draw(1) ,3:deck.draw(1) });
   };
 
   // actions
@@ -70,44 +72,47 @@ function Table() {
 
   const call = async () => {
     console.log("call");
+    let numberOfCardsOnTable = Object.keys(gamesCards).length;
     setPlayer2({
       ...player2,
       bid: player1.bid,
       credits: player2.credits - player1.bid,
       isActive: 0,
     });
-    setPlayer1({ ...player1, bid: player2.bid, isActive: 1 });
+    setPlayer1({ ...player1,  isActive: 1 });
 
-    setgamesCards(gamesCards + 1);
+    if(numberOfCardsOnTable === 3){
+      setgamesCards({ ...gamesCards, 4:deck.draw(1)  });
+    }else if(numberOfCardsOnTable === 4){
+      setgamesCards({ ...gamesCards, 5:deck.draw(1)  });
+    }
+    
   };
 
   const raise = async () => {
     console.log("raise");
   };
+  
+  
 
-  const getRandomCard = () => {
-    console.log("------------------------------here------------------------");
-    let card = deck.draw(1);
-    console.log(card);
 
-    return card;
-  };
-  console.log(gamesCards);
   return (
     <div className="table">
       <div className="table-image">
         <div className="card-decks">
           <Card type={"back"} startGame={startGame} />
 
-          {[...Array(gamesCards)].map((e, i) => (
+          {[...Array(Object.keys(gamesCards).length)].map((e, i) => (
             <Card
               type={"front"}
-              cardNumber={`c${i}`}
-              cardInfo={getRandomCard()}
+              cardNumber={`c${i+1}`}
+              index={i+1}
+              cardInfo={gamesCards}
             />
           ))}
         </div>
 
+        
         <Player
           name={`${data?.name?.first}  ${data?.name?.last}`}
           position={players_positions[0]}

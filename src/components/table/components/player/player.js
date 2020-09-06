@@ -32,7 +32,7 @@ function Player(props) {
   return (
     <div
       className="player"
-      style={{ top: props.position.top, left: props.position.left }}
+      style={ props.position }
     >
       <img
         className={"player-image " + (props.player.isActive ? "active" : "")}
@@ -41,7 +41,7 @@ function Player(props) {
       {props.player.bid ? (
         <div className="bid">
           <img className="player-coins" src={"/images/coin.png"} />
-          <div className="">{props.player.bid}</div>
+          <div>{props.player.bid}</div>
         </div>
       ) : (
         ""
