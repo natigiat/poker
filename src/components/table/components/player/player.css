@@ -53,6 +53,19 @@ img.player-coins {
   margin: 33px -1px;
 }
 
+
+.card-player-wrapper {
+  width: 200px;
+  height: 200px;
+  display: flex;
+}
+
+.card-player-wrapper img {
+  width: 85px;
+  height: 86px;
+}
+
+
 @keyframes pulse {
   0% {
     transform: scale(0.95);

@@ -10,7 +10,7 @@ function Settings(props) {
           <div className="action" onClick={props.allIn}>
             all in
           </div>
-          <div className="budget">1500$</div>
+          <div className="budget">{props.player2.credits}$</div>
         </div>
 
         <div className="actions-wrapper">

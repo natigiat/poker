@@ -22,8 +22,6 @@ const stringToCardIcon = (name) => {
 };
 
 function Card(props) {
-  console.log(props);
- 
   return (
     <>
       {props.type === "front" ? (
@@ -35,11 +33,9 @@ function Card(props) {
             {props.cardInfo[props.index][0].rank?.shortName}
           </div>
 
-         
           <div className="crad-shape">
             {stringToCardIcon(props.cardInfo[props.index][0].suit?.name)}
           </div>
-        
         </div>
       ) : (
         <img

@@ -23,7 +23,6 @@ function Table() {
   });
 
   const [gamesCards, setgamesCards] = useState({});
-  
 
   const players = 1;
   const players_positions = [
@@ -43,7 +42,7 @@ function Table() {
     fetchData();
   }, []);
 
-  const startGame =  () => {
+  const startGame = () => {
     deck.shuffleAll();
 
     setPlayer1({
@@ -52,49 +51,103 @@ function Table() {
       bid: 20,
       credits: player1.credits - 20,
     });
-    setPlayer2({ ...player2, cards: deck.draw(2), isActive: 1 });
-    setgamesCards({ ...gamesCards, 1:deck.draw(1) ,  2:deck.draw(1) ,3:deck.draw(1) });
+    setPlayer2({
+      ...player2,
+      bid: player2.bid,
+      credits: player2.credits,
+      cards: deck.draw(2),
+      isActive: 1,
+    });
+    setgamesCards({
+      ...gamesCards,
+      1: deck.draw(1),
+      2: deck.draw(1),
+      3: deck.draw(1),
+    });
   };
 
   // actions
 
   const allIn = async () => {
-    setPlayer1({
-      ...player1,
-      isActive: 1,
-    });
-    setPlayer2({ ...player2, credits: player1.credits - player1.credits });
+    // setPlayer1({
+    //   ...player1,
+    //   isActive: 1,
+    // });
+    // setPlayer2({ ...player2, bid: player2.credit, credits: 0 });
   };
 
   const fold = async () => {
-    console.log("fold");
+    // setPlayer1({
+    //   ...player1,
+    //   isActive: 0,
+    //   bid: player1.bid,
+    //   credits: player1.credits,
+    // });
+    // setPlayer2({
+    //   ...player2,
+    //   bid: 0,
+    //   credits: player2.credits - player1.bid,
+    //   isActive: 0,
+    // });
   };
 
   const call = async () => {
     console.log("call");
     let numberOfCardsOnTable = Object.keys(gamesCards).length;
+
+    setPlayer1({
+      ...player1,
+      isActive: 1,
+      bid: player1.bid,
+      credits: player1.credits,
+    });
+
     setPlayer2({
       ...player2,
       bid: player1.bid,
       credits: player2.credits - player1.bid,
       isActive: 0,
     });
-    setPlayer1({ ...player1,  isActive: 1 });
-
-    if(numberOfCardsOnTable === 3){
-      setgamesCards({ ...gamesCards, 4:deck.draw(1)  });
-    }else if(numberOfCardsOnTable === 4){
-      setgamesCards({ ...gamesCards, 5:deck.draw(1)  });
+    console.log({ player2 });
+    if (numberOfCardsOnTable === 3) {
+      setgamesCards({ ...gamesCards, 4: deck.draw(1) });
+      computerRandomBid();
+    } else if (numberOfCardsOnTable === 4) {
+      setgamesCards({ ...gamesCards, 5: deck.draw(1) });
+      computerRandomBid();
+    } else if (numberOfCardsOnTable === 5) {
+      calculateEndGame();
+      return;
     }
-    
+  };
+
+  const computerRandomBid = () => {
+    let randReplayPlayer1 = Math.floor((Math.random() * 100 + 5) * 100);
+    let randBid = Math.floor(Math.random() * player1.credits) + 1;
+    console.log({ step: 1, player2 });
+    setTimeout(() => {
+      console.log(["player2"]);
+      setPlayer1({
+        ...player1,
+        bid: player1.bid + randBid,
+        credits: player1.credits - randBid,
+        isActive: 0,
+      });
+      console.log({ step: 3, player2 });
+      setPlayer2({
+        ...player2,
+        isActive: 1,
+      });
+    }, randReplayPlayer1);
   };
 
   const raise = async () => {
     console.log("raise");
   };
-  
-  
 
+  const calculateEndGame = async () => {
+    alert("calculateEndGame");
+  };
 
   return (
     <div className="table">
@@ -105,14 +158,13 @@ function Table() {
           {[...Array(Object.keys(gamesCards).length)].map((e, i) => (
             <Card
               type={"front"}
-              cardNumber={`c${i+1}`}
-              index={i+1}
+              cardNumber={`c${i + 1}`}
+              index={i + 1}
               cardInfo={gamesCards}
             />
           ))}
         </div>
 
-        
         <Player
           name={`${data?.name?.first}  ${data?.name?.last}`}
           position={players_positions[0]}
@@ -136,6 +188,7 @@ function Table() {
         call={call}
         raise={raise}
         player1={player1}
+        player2={player2}
       />
     </div>
   );

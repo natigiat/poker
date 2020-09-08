@@ -2,13 +2,6 @@ import React from "react";
 import "./player.css";
 
 function Player(props) {
-  console.log({ props });
-
-  const nameTosymbole = async (suit) => {
-    console.log(suit);
-    return "good";
-  };
-
   const stringToCardIcon = (name) => {
     switch (name) {
       case "hearts":
@@ -30,10 +23,7 @@ function Player(props) {
   };
 
   return (
-    <div
-      className="player"
-      style={ props.position }
-    >
+    <div className="player" style={props.position}>
       <img
         className={"player-image " + (props.player.isActive ? "active" : "")}
         src={props.picture}
@@ -51,14 +41,24 @@ function Player(props) {
         <div className="credits">{props.player.credits}</div>
         <img className="player-coins" src={"/images/coins.png"} />
       </div>
-      {props.player.cards.map((card) => {
-        return (
-          <div className="card">
-            <div className="crad-number">{card.rank.shortName}</div>
-            <div className="crad-shape">{stringToCardIcon(card.suit.name)}</div>
-          </div>
-        );
-      })}
+      {props.name === "You" ? (
+        props.player.cards.map((card) => {
+          return (
+            <div className="card">
+              <div className="crad-number">{card.rank.shortName}</div>
+              <div className="crad-shape">
+                {stringToCardIcon(card.suit.name)}
+              </div>
+            </div>
+          );
+        })
+      ) : (
+        <div className="card-player-wrapper">
+          {props.player.cards.map((card) => {
+            return <img src="/images/back.png" />;
+          })}
+        </div>
+      )}
     </div>
   );
 }
