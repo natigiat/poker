@@ -4,6 +4,7 @@ import Settings from "./components/settings/settings";
 import Player from "./components/player/player";
 import Card from "./components/card/card";
 import axios from "axios";
+import card from "cards/src/card";
 const { decks } = require("cards");
 const deck = new decks.StandardDeck();
 
@@ -146,7 +147,31 @@ function Table() {
   };
 
   const calculateEndGame = async () => {
-    alert("calculateEndGame");
+    fincEqualesCard({ game: gamesCards, player1, player2 });
+  };
+
+  const fincEqualeCard = (player, gameCrads) =>
+    player.cards.reduce((acc, card) => {
+      const cardExistInGame = gameCrads.indexOf(card.rank.shortName) !== -1;
+      cardExistInGame &&
+        !acc[card.rank.shortName] &&
+        (acc[card.rank.shortName] = 0);
+
+      cardExistInGame &&
+        (acc[card.rank.shortName] = acc[card.rank.shortName] + 1);
+
+      return acc;
+    }, {});
+
+  const fincEqualesCard = ({ game, player1, player2 }) => {
+    const gameCrads = Object.values(game).map((crad) => {
+      return crad[0].rank.shortName;
+    });
+
+    const qualsePlayer1 = fincEqualeCard(player1, gameCrads);
+    const qualsePlayer2 = fincEqualeCard(player2, gameCrads);
+
+    console.log({ qualsePlayer1, qualsePlayer2, gameCrads });
   };
 
   return (
